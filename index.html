@@ -1,3 +1,243 @@
-<!DOCTYPE html><html lang="en"></html><head><title>Brandon Leon</title><link href="assets/css/bootstrap.css" rel="stylesheet"><style>body {padding-top: 60px;}</style><link href="assets/css/responsive.css" rel="stylesheet"></head><body><div class="navbar navbar-fixed-top"><div class="navbar-inner"><div class="container"><a data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><a href="index.html" class="brand">Brandon Leon</a></a></div></div><div class="well span5"><h1>OrionSearch</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brandon Leon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --ctp-rosewater: #f5e0dc;
+      --ctp-flamingo: #f2cdcd;
+      --ctp-pink: #f5c2e7;
+      --ctp-mauve: #cba6f7;
+      --ctp-red: #f38ba8;
+      --ctp-maroon: #eba0ac;
+      --ctp-peach: #fab387;
+      --ctp-yellow: #f9e2af;
+      --ctp-green: #a6e3a1;
+      --ctp-teal: #94e2d5;
+      --ctp-sky: #89dceb;
+      --ctp-sapphire: #74c7ec;
+      --ctp-blue: #89b4fa;
+      --ctp-lavender: #b4befe;
+      --ctp-text: #cdd6f4;
+      --ctp-subtext: #a6adc8;
+      --ctp-surface0: #313244;
+      --ctp-surface1: #45475a;
+      --ctp-surface2: #585b70;
+      --ctp-base: #1e1e2e;
+      --ctp-mantle: #181825;
+      --ctp-crust: #11111b;
+      --gradient: radial-gradient(120% 140% at 20% 20%, rgba(148, 226, 213, 0.25), transparent 35%), radial-gradient(100% 100% at 80% 20%, rgba(139, 233, 253, 0.2), transparent 45%), radial-gradient(110% 120% at 50% 100%, rgba(203, 166, 247, 0.18), transparent 50%);
+    }
 
-<p>Custom Search interface for Orion. Allows non authenticated users to confirm if nodes exists in the Orion Database. This tools is designed with read only access to the database. <a href="http://brandonleon.github.com/OrionSearch/">OrionSearch</a></p></div></div></body>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--ctp-base);
+      color: var(--ctp-text);
+      font-family: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+      background-image: var(--gradient);
+      background-attachment: fixed;
+    }
+
+    a {
+      color: var(--ctp-lavender);
+    }
+
+    a:hover {
+      color: var(--ctp-pink);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .hero {
+      padding: 120px 0 80px;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--ctp-subtext);
+      font-size: 1.1rem;
+      max-width: 640px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--ctp-sapphire), var(--ctp-lavender));
+      border: none;
+      box-shadow: 0 10px 30px rgba(148, 226, 213, 0.15);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--ctp-blue), var(--ctp-mauve));
+    }
+
+    .card {
+      background: rgba(17, 17, 27, 0.8);
+      border: 1px solid var(--ctp-surface2);
+      box-shadow: 0 10px 40px rgba(17, 17, 27, 0.35);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--ctp-lavender);
+    }
+
+    .card h5 {
+      color: var(--ctp-rosewater);
+    }
+
+    .card-text {
+      color: var(--ctp-text);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(69, 71, 90, 0.6);
+      color: var(--ctp-subtext);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--ctp-surface2);
+      padding: 24px 0 32px;
+      color: var(--ctp-subtext);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent sticky-top">
+    <div class="container py-3">
+      <a class="navbar-brand" href="#">Brandon Leon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/brandonleon" target="_blank" rel="noopener">GitHub</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mailto:brandonleon@pm.me">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <div class="d-inline-flex gap-3 align-items-center mb-3">
+              <span class="tag">Engineer & Builder</span>
+              <span class="tag" style="background: rgba(137, 180, 250, 0.2); color: var(--ctp-blue);">Catppuccin-inspired</span>
+            </div>
+            <h1>Building thoughtful software with clean interfaces.</h1>
+            <p>I design and build lean products with an eye for performance and experience. Here are a couple of projects I’m currently focused on.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a class="btn btn-primary btn-lg" href="#projects">See the work</a>
+              <a class="btn btn-outline-light btn-lg" href="https://github.com/brandonleon" target="_blank" rel="noopener">View GitHub</a>
+            </div>
+          </div>
+          <div class="col-lg-5 mt-5 mt-lg-0">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title mb-3">What I’m into</h5>
+                <p class="card-text mb-3">Human-centered tooling, fast feedback loops, clean abstractions, and making data useful. Recently, experimenting with modern web stacks and simplifying workflows.</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">React</span>
+                  <span class="tag">APIs</span>
+                  <span class="tag">Automation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <p class="text-uppercase text-secondary mb-1" style="letter-spacing: 0.08em;">Featured Work</p>
+            <h2 class="fw-bold">Projects worth a look</h2>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h5 class="card-title">OpenRSVP</h5>
+                  <span class="tag">Event tooling</span>
+                </div>
+                <p class="card-text mb-4 flex-grow-1">Lightweight, self-hosted RSVP manager to keep events organized without extra overhead. Focused on simple flows, clear confirmations, and easy attendee tracking.</p>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="https://github.com/brandonleon/OpenRSVP" target="_blank" rel="noopener">View repo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h5 class="card-title">DishList</h5>
+                  <span class="tag">Food discovery</span>
+                </div>
+                <p class="card-text mb-4 flex-grow-1">Curate and share standout dishes with friends. Built to surface the best bites in any city with quick saves, lists, and a polished mobile-first experience.</p>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="https://github.com/brandonleon/DishList" target="_blank" rel="noopener">View repo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+      <div>Built with Bootstrap 5 and a Catppuccin-inspired palette.</div>
+      <div class="d-flex gap-3">
+        <a href="https://github.com/brandonleon" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:brandonleon@pm.me">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
